@@ -44,3 +44,31 @@
 .delay-300 { transition-delay: 0.3s; }
 .delay-400 { transition-delay: 0.4s; }
 .delay-500 { transition-delay: 0.5s; }
+
+/* =========================================
+   3D TILT STYLES
+   ========================================= */
+
+/* Kontainer Gambar Hero untuk efek 3D */
+.hero-image {
+    transform-style: preserve-3d; /* Penting untuk konteks 3D */
+}
+
+/* Gambar Hero */
+#heroImage {
+    transition: transform 0.5s ease-out; /* Transisi untuk reset dan gerakan halus */
+    will-change: transform; /* Optimasi browser */
+}
+
+/* Kartu-kartu yang akan di-tilt */
+.proker-card, .struct-card, .gallery-item {
+    transform-style: preserve-3d; /* Penting untuk efek 3D */
+    transform: perspective(1000px); /* Perspektif default */
+    transition: transform 0.2s ease-out; /* Transisi untuk reset */
+    will-change: transform; /* Optimasi browser */
+}
+
+/* Tambahkan ini di bagian .hero agar gambar tidak keluar batas saat scale */
+.hero {
+    overflow: hidden; 
+}

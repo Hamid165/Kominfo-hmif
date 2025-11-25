@@ -22,7 +22,82 @@ function loadSlideImage(slide) {
   }
 }
 
-// --- 2.1 Typewriter Effect ---
+// --- BARU: Hero Image Parallax / Tilt ---
+function setupHeroImageTilt() {
+  const heroSection = document.getElementById("home"); // Ambil seluruh hero section
+  const heroImage = document.getElementById("heroImage"); // Ambil gambar di hero section
+
+  if (!heroSection || !heroImage) return;
+
+  // Kekuatan efek tilt (semakin kecil, semakin lembut pergerakannya)
+  const tiltStrength = 0.05;
+
+  heroSection.addEventListener("mousemove", (e) => {
+    // Posisi mouse relatif terhadap hero section
+    const rect = heroSection.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    // Posisi tengah hero section
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    // Hitung perbedaan posisi mouse dari tengah
+    const diffX = mouseX - centerX;
+    const diffY = mouseY - centerY;
+
+    // Hitung nilai transform (rotateX dan rotateY)
+    const rotateY = diffX * tiltStrength * -1; // Invers X untuk rotasi Y
+    const rotateX = diffY * tiltStrength; // Rotasi X normal
+
+    // Aplikasikan transform pada gambar
+    heroImage.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+    heroImage.style.transition = `transform 0.1s ease-out`; // Animasi halus saat mouse bergerak
+  });
+
+  // Reset transform saat mouse meninggalkan area hero section
+  heroSection.addEventListener("mouseleave", () => {
+    heroImage.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+    heroImage.style.transition = `transform 0.5s ease-out`; // Animasi reset yang lebih lambat
+  });
+}
+
+// --- BARU: Setup 3D Tilt Cards ---
+function setup3DTiltCards() {
+  // Pilih semua elemen yang akan diberi efek tilt
+  const tiltElements = document.querySelectorAll(
+    ".proker-card, .struct-card, .gallery-item"
+  );
+
+  if (tiltElements.length === 0) return;
+
+  const tiltStrength = 15; // Kekuatan tilt (derajat maksimal rotasi)
+  const perspective = 1000; // Jarak perspektif 3D
+
+  tiltElements.forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+
+      // Rotasi X: Semakin ke bawah mouse, semakin memiringkan kartu ke depan
+      // Rotasi Y: Semakin ke kanan mouse, semakin memiringkan kartu ke kiri
+      const rotateX = ((mouseY - centerY) / centerY) * tiltStrength * -1;
+      const rotateY = ((mouseX - centerX) / centerX) * tiltStrength;
+
+      card.style.transform = `perspective(${perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = `perspective(${perspective}px) rotateX(0deg) rotateY(0deg)`;
+    });
+  });
+}
+
+// --- 2.1 Typewriter Effect (KODE ASLI) ---
 function typeEffect() {
   if (!typingElement) return;
 
@@ -198,6 +273,10 @@ document.addEventListener("DOMContentLoaded", function () {
   typeEffect();
   carousel();
   setupLoadMore();
+
+  // Panggil fungsi-fungsi TILT BARU di sini
+  setupHeroImageTilt();
+  setup3DTiltCards();
 });
 
 // C. Back to Top Listener
