@@ -1,0 +1,892 @@
+/* =========================================
+   1. RESET & BASE STYLES (MODERN LOOK)
+   ========================================= */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* FONT BARU */
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary-color: #FFC107; 
+    --primary-hover: #e0a800; 
+    --dark-color: #222;       
+    --light-color: #fff;      
+    --bg-alt: #f8f9fa;        
+    --text-color: #555;
+    --shadow-soft: 0 10px 30px rgba(0,0,0,0.05); /* Bayangan lembut */
+}
+
+body {
+    line-height: 1.7; color: var(--text-color);
+    background-color: var(--light-color);
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+.container { max-width: 1100px; margin: auto; padding: 0 20px; }
+
+/* =========================================
+   2. FLOATING NAVBAR (MELAYANG)
+   ========================================= */
+.navbar {
+    background: rgba(255, 255, 255, 0.95); /* Agak transparan */
+    backdrop-filter: blur(10px); /* Efek blur di belakang */
+    position: fixed; top: 20px; /* Jarak dari atas */
+    left: 50%; transform: translateX(-50%); /* Tengah */
+    width: 90%; max-width: 1100px;
+    z-index: 1000;
+    border-radius: 50px; /* Sudut membulat */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    padding: 0 10px;
+}
+
+.navbar .container {
+    display: flex; justify-content: space-between; align-items: center; height: 70px;
+}
+
+.logo-container { display: flex; align-items: center; gap: 10px; }
+.logo-img { height: 35px; width: auto; }
+.logo-text { color: var(--dark-color); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
+
+.nav-links { display: flex; }
+.nav-links li { margin-left: 25px; }
+.nav-links a { 
+    color: var(--dark-color); font-weight: 500; font-size: 0.95rem; 
+    transition: 0.3s; position: relative;
+}
+/* Efek garis bawah saat hover */
+.nav-links a::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: -5px; left: 0; background-color: var(--primary-color);
+    transition: 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+.hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--dark-color); }
+
+/* =========================================
+   3. HERO SECTION (CENTERED & BOLD)
+   ========================================= */
+.hero {
+    background-color: var(--light-color); 
+    padding: 180px 0 100px; /* Padding atas besar krn navbar melayang */
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh;
+    text-align: center; /* Rata Tengah */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hiasan Latar Belakang (Bulatan Kuning Samar) */
+.hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 400px; height: 400px; background: var(--primary-color);
+    opacity: 0.1; border-radius: 50%; filter: blur(80px); z-index: 0;
+}
+
+.hero-wrapper {
+    display: flex; flex-direction: column; /* Tumpuk ke bawah */
+    align-items: center; gap: 50px; width: 100%; z-index: 1;
+}
+
+.hero-content { max-width: 710px; margin: 0 auto; }
+.hero-content h2 { 
+    font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; 
+    color: var(--dark-color); font-weight: 800;
+}
+.hero-content p { font-size: 1.15rem; margin-bottom: 30px; color: var(--text-color); }
+
+.hero-image img {
+    width: 100%; max-width: 600px; height: auto;
+    object-fit: cover; border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Bayangan lembut besar */
+    transform: rotate(-2deg); /* Miring dikit biar artistik */
+    transition: 0.5s;
+}
+.hero-image img:hover { transform: rotate(0deg) scale(1.02); }
+
+.btn {
+    display: inline-block; background: var(--dark-color); /* Tombol Hitam */
+    color: #fff; font-weight: 600; padding: 14px 35px; border-radius: 50px;
+    transition: 0.3s; border: none; cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.btn:hover { background: var(--primary-color); color: #000; transform: translateY(-3px); }
+
+/* =========================================
+   4. SECTIONS (CLEAN STYLE)
+   ========================================= */
+.section-padding { padding: 100px 0; text-align: center; }
+.section-title {
+    font-size: 2.2rem; margin-bottom: 15px; color: var(--dark-color);
+    font-weight: 700; display: inline-block; position: relative;
+}
+/* Hapus garis judul (tidak tampil) */
+.section-title::after {
+    display: none; /* Garis judul dinonaktifkan */
+}
+
+#about {
+    min-height: 90vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    
+    text-align: center !important; /* MEMAKSA RATA TENGAH */
+    
+    background: var(--bg-body); 
+}
+.about-list {
+    max-width: 800px; margin: 40px auto 0; text-align: left;
+    background: #fff; padding: 0; border: none; box-shadow: none;
+}
+.about-list li {
+    display: flex; align-items: flex-start; margin-bottom: 25px; 
+    font-size: 1.1rem; padding: 20px; border-radius: 15px;
+    background: var(--bg-alt); /* Background abu tipis per item */
+    transition: 0.3s;
+}
+.about-list li:hover { transform: translateX(10px); background: #fff; box-shadow: var(--shadow-soft); }
+.about-list li i { color: var(--primary-color); font-size: 1.5rem; margin-right: 20px; flex-shrink: 0; }
+
+/* Proker Cards (Clean) */
+.bg-light { background: #f4f7f6; }
+.proker-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; margin-top: 50px;
+}
+.proker-card {
+    background: #fff; border-radius: 20px; overflow: hidden;
+    box-shadow: var(--shadow-soft); border: none; /* Hapus border */
+    transition: 0.4s ease; text-align: center; /* Rata tengah */
+}
+.proker-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.proker-img-box { width: 100%; height: 220px; overflow: hidden; }
+.proker-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.proker-card:hover .proker-img-box img { transform: scale(1.1); }
+.proker-content { padding: 30px; }
+.proker-content h3 { font-size: 1.4rem; margin-bottom: 10px; font-weight: 700; }
+.btn-detail {
+    margin-top: 20px; padding: 10px 25px; background: transparent;
+    border: 2px solid var(--primary-color); color: var(--dark-color);
+    border-radius: 50px; font-weight: 600; transition: 0.3s;
+}
+.btn-detail:hover { background: var(--primary-color); color: #fff; }
+
+/* =========================================
+   5. STRUKTUR (Tetap Rapi)
+   ========================================= */
+.structure-tree { margin-top: 50px; display: flex; flex-direction: column; align-items: center; }
+.level { display: flex; justify-content: center; gap: 30px; margin-bottom: 0; z-index: 2; position: relative; }
+
+.struct-card {
+    background: #fff; padding: 25px; border-radius: 15px;
+    box-shadow: var(--shadow-soft); text-align: center; width: 220px;
+    border: 1px solid #eee; /* Border halus */
+    border-top: none; /* Hapus border tebal atas */
+    transition: 0.3s;
+}
+.struct-card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+.struct-card .img-box {
+    width: 110px; height: 110px; margin: 0 auto 15px;
+    border-radius: 50%; overflow: hidden; 
+    border: 3px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.struct-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; }
+.struct-card .role { font-size: 0.85rem; color: var(--text-color); font-weight: 500; }
+
+/* Garis-garis Struktur */
+.line-vertical-top, .line-vertical-single, .level.level-3 .struct-card::before { width: 2px; background: #ccc; }
+.line-branch-2, .line-merge-2, .line-branch-5 { border-color: #ccc; border-width: 2px; }
+/* Koor beda dikit */
+.level-1 .struct-card { background: #fff; border: 2px solid var(--primary-color); width: 260px; }
+/* =========================================
+   FIX: LEVEL 3 (5 CONTENT CREATOR)
+   ========================================= */
+
+.level.level-3 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap !important; /* Paksa satu baris */
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px; /* Jarak antar kartu dirapatkan dikit biar muat */
+    width: 100%;
+    
+    /* HILANGKAN GESER/SCROLL */
+    overflow-x: visible; 
+    padding-bottom: 0;
+}
+
+.level.level-3 .struct-card {
+    /* BIAR KARTU LEBIH BESAR TAPI TETAP MUAT */
+    flex: 1;             /* Membesar otomatis mengisi ruang kosong */
+    width: 100%;         /* Mengambil lebar penuh flex */
+    min-width: 0;        /* Penting: Biarkan mengecil jika layar sempit */
+    max-width: 220px;    /* Batas maksimal diperbesar (Awalnya 200px) */
+    
+    margin: 25px 0 0 0;
+    position: relative;
+    overflow: visible !important;
+    padding: 15px 5px;   /* Padding kanan-kiri dikurangi biar muat */
+}
+
+/* Sesuaikan Ukuran Foto */
+.level.level-3 .img-box {
+    width: 90px;  /* Foto sedikit diperbesar */
+    height: 90px;
+    margin-bottom: 10px;
+    z-index: 2;
+    position: relative;
+    background: #fff;
+    border: 3px solid #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* UPDATE: FONT NAMA LEBIH KECIL */
+.level.level-3 h4 {
+    font-size: 1rem; /* Diperkecil (Awalnya 1rem/1.1rem) */
+    line-height: 1.3;
+    margin-bottom: 2px;
+    white-space: normal; /* Izinkan nama panjang turun baris */
+}
+
+.level.level-3 .role {
+    font-size: 0.75rem; /* Role juga diperkecil sedikit */
+}
+
+/* --- PERBAIKAN GARIS TIANG --- */
+.level.level-3 .struct-card::before {
+    content: '';
+    position: absolute;
+    display: block !important;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 30px;
+    background: #ccc; /* Warna garis abu sesuai tema */
+    z-index: 0;
+}
+
+/* Sembunyikan garis tiang untuk kartu pertama & terakhir (karena ada garis lengkung utama) */
+.level.level-3 .struct-card:first-child::before,
+.level.level-3 .struct-card:last-child::before {
+    display: none !important;
+}/* =========================================
+   5. STRUKTUR DEPARTEMEN (PERBAIKAN LENGKAP)
+   ========================================= */
+/* Container Utama */
+#struktur {
+    text-align: center !important;
+    padding-bottom: 80px;
+}
+
+#struktur .section-desc {
+    margin: 0 auto 40px;
+    max-width: 800px;
+    color: var(--text-color);
+}
+
+.structure-tree {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* --- PENGATURAN LEVEL & SPASI ANTAR KARTU --- */
+.level {
+    display: flex;
+    justify-content: center;
+    /* INI KUNCINYA: Memberi jarak horizontal antar kartu */
+    gap: 30px; 
+    margin-bottom: 0; /* Jarak vertikal diatur oleh tinggi garis */
+    z-index: 2;
+    position: relative;
+    width: 100%;
+}
+
+/* --- STYLE KARTU (STRUCT-CARD) --- */
+.struct-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    width: 220px;
+    border: 1px solid #eee;
+    transition: 0.3s;
+    cursor: pointer;
+    position: relative; /* Penting untuk garis tiang level 3 */
+}
+
+.struct-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.struct-card .img-box {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: #fff;
+    z-index: 2;
+    position: relative;
+}
+
+.struct-card .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.struct-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--dark-color);
+}
+
+.struct-card .role {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Kartu Koordinator (Level 1) lebih besar */
+.level-1 .struct-card {
+    border: 2px solid var(--primary-color);
+    width: 260px;
+}
+
+/* --- GARIS-GARIS PENGHUBUNG (WAJIB ADA WARNA & UKURAN) --- */
+
+/* Garis vertikal tunggal (turun dari Koor) */
+.line-vertical-top {
+    width: 3px;
+    height: 30px; /* Tinggi jarak vertikal */
+    background: var(--primary-color); /* Pastikan ada warnanya */
+    margin: 0 auto;
+}
+
+/* Garis cabang ke-2 (melengkung atas) */
+.line-branch-2 {
+    width: 250px; /* Lebar cabang disesuaikan dengan gap kartu */
+    height: 25px;
+    margin: 0 auto;
+    /* Hanya border atas, kiri, kanan */
+    border-top: 3px solid var(--primary-color);
+    border-left: 3px solid var(--primary-color);
+    border-right: 3px solid var(--primary-color);
+    border-radius: 15px 15px 0 0; /* Lengkungan sudut atas */
+}
+
+/* Garis gabung ke-2 (melengkung bawah) */
+.line-merge-2 {
+    width: 250px;
+    height: 25px;
+    margin: 0 auto;
+    /* Hanya border bawah, kiri, kanan */
+    border-bottom: 3px solid var(--primary-color);
+    border-left: 3px solid var(--primary-color);
+    border-right: 3px solid var(--primary-color);
+    border-radius: 0 0 15px 15px; /* Lengkungan sudut bawah */
+}
+
+/* Garis vertikal tunggal (turun ke Level 3) */
+.line-vertical-single {
+    width: 3px;
+    height: 30px;
+    background: var(--primary-color);
+    margin: 0 auto;
+}
+
+/* Garis Horizontal Panjang untuk Level 3 */
+.line-branch-5 {
+    width: 81.5%; /* Lebar garis horizontal */
+    height: 3px;
+    background: var(--primary-color);
+    margin: 0 ;
+}
+
+
+/* --- KHUSUS LEVEL 3 (CONTENT CREATOR) --- */
+.level.level-3 {
+    display: flex;
+    flex-wrap: nowrap !important;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px; /* SPASI ANTAR KARTU LEVEL 3 */
+    width: 100%;
+    overflow-x: visible; /* Hapus scroll */
+    padding-bottom: 10px;
+    margin-top: 0; /* Mepet ke garis horizontal */
+}
+
+.level.level-3 .struct-card {
+    flex: 1 1 0px;
+    min-width: 180px;
+    max-width: 250px;
+    margin-top: 30px; /* Jarak dari garis horizontal ke kartu */
+    overflow: visible !important;
+    padding: 15px 5px;
+}
+
+.level.level-3 .img-box {
+    width: 90px;
+    height: 90px;
+}
+
+.level.level-3 h4 {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    white-space: normal;
+}
+
+/* Tiang Vertikal Kecil di atas setiap kartu Level 3 */
+.level.level-3 .struct-card::before {
+    content: ''; 
+    position: absolute; 
+    display: block !important; /* Pastikan SELALU MUNCUL */
+    
+    top: -33px; 
+    left: 50%; 
+    transform: translateX(-50%);
+    
+    width: 3px; 
+    height: 40px; 
+    background: var(--primary-color); 
+    z-index: 0;
+}
+
+/* Sembunyikan tiang untuk kartu pertama & terakhir (agar rapi) */
+.level.level-3 .struct-card:first-child::before,
+.level.level-3 .struct-card:last-child::before {
+    display: block !important; /* Ubah dari 'none' ke 'block' */
+}
+
+/* --- RESPONSIVE HP (PENTING: Sembunyikan garis di HP) --- */
+@media (max-width: 768px) {
+    .line-branch-2, 
+    .line-merge-2, 
+    .line-branch-5, 
+    .line-vertical-single, 
+    .line-vertical-top, 
+    .level.level-3 .struct-card::before {
+        display: none !important; /* HILANGKAN SEMUA GARIS DI HP */
+    }
+    
+    .level {
+        flex-direction: column; /* Kartu jadi tumpuk ke bawah */
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .level.level-3 {
+        flex-direction: row; /* Level 3 tetap kesamping tapi di-scroll */
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        justify-content: flex-start;
+        padding-left: 20px;
+        gap: 15px;
+    }
+    
+    .level.level-3 .struct-card {
+        margin-top: 0;
+        flex: 0 0 auto;
+        width: 200px;
+    }
+}
+
+/* =========================================
+   6. DOKUMENTASI & FOOTER
+   ========================================= */
+.gallery-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px; margin-top: 40px;
+}
+.gallery-item {
+    height: 220px; border-radius: 12px; overflow: hidden;
+    box-shadow: none; /* Hapus shadow di foto biar flat */
+    cursor: pointer; display: none; /* Load More */
+}
+.gallery-item:nth-child(-n+10) { display: block; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.gallery-item:hover img { transform: scale(1.05); }
+
+/* Footer */
+/* =========================================
+   FOOTER MODERN (MEGA FOOTER - DIRAPIKAN)
+   ========================================= */
+.footer {
+    background-color: #1a1a1a;
+    color: #bbb;
+    /* Tambah padding atas/bawah */
+    padding-top: 100px; 
+    padding-bottom: 20px;
+    border-top: 8px solid var(--primary-color);
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* Tambah jarak horizontal antar kolom */
+    gap: 40px; 
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 180px; 
+    margin-bottom: 40px;
+}
+
+/* Judul Kolom */
+.footer-col h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    /* Tambah jarak di bawah judul */
+    margin-bottom: 30px; 
+    position: relative;
+    font-weight: bold;
+}
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: var(--primary-color);
+    height: 3px;
+    width: 50px;
+}
+
+/* Kolom 1: Logo & Desc */
+.footer-logo {
+    /* KUNCI: Memastikan Logo dan H3 sejajar horizontal */
+    display: flex; 
+    align-items: center; /* Rata tengah vertikal */
+    gap: 10px; 
+    margin-bottom: 20px;
+}
+.footer-logo-img { height: 40px; width: auto; }
+.footer-logo h3 {
+    /* Hapus margin default dan pastikan line-height normal */
+    margin: 0;
+    line-height: 1; 
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+.footer-logo h3::after { display: none; } 
+.footer-desc { font-size: 0.9rem; line-height: 1.7; /* Line height diperlebar */ }
+
+/* Kolom 2: Links */
+.footer-links li {
+    /* Tambah jarak vertikal di list */
+    margin-bottom: 15px; 
+}
+.footer-links a { color: #bbb; transition: 0.3s; display: inline-block; }
+.footer-links a:hover { color: var(--primary-color); padding-left: 8px; }
+
+/* Kolom 3: Kontak */
+/* Perbaikan CSS di file style.css (Bagian Footer) */
+
+.footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px; 
+    font-size: 0.9rem;
+    overflow: hidden; /* Penting: agar teks yang melebihi batas bisa disembunyikan */
+}
+
+.footer-contact li span {
+    /* KUNCI: Memaksa teks di satu baris penuh */
+    white-space: nowrap; 
+    
+    /* Menangani teks yang tidak muat di satu baris */
+    overflow: hidden; 
+    text-overflow: ellipsis; /* Menambahkan ... jika teks terlalu panjang */
+    
+    flex-shrink: 1; /* Memastikan teks bisa mengecil jika diperlukan */
+}
+
+.footer-contact i {
+    color: var(--primary-color);
+    margin-top: 5px;
+    /* Memberi ruang pasti untuk ikon agar teks tidak bergeser */
+    flex-shrink: 0; 
+}
+/* =========================================
+   FIX: JARAK ANTAR KOLOM FOOTER
+   ========================================= */
+
+/* Batasi lebar Kolom ke-2 (Jelajahi) agar tidak mengambil banyak ruang */
+.footer-row .footer-col:nth-child(2) {
+    max-width: 160px; /* Batasi maksimal lebar */
+    min-width: 120px; /* Batas minimal */
+}
+
+/* Pastikan kolom Kontak (ke-3) punya cukup ruang dan diatur margin-nya */
+.footer-row .footer-col:nth-child(3) {
+    /* Override margin-right: auto yang kita pasang sebelumnya agar Kolom 3 & 4 berjarak */
+    margin-right: auto; 
+    /* Tambah sedikit lebar minimal agar alamat lebih muat */
+    min-width: 220px; 
+}
+/* Kolom 4: Sosmed */
+.social-links { display: flex; gap: 15px; margin-top: -5px; } /* Ditarik ke atas sedikit agar pas di bawah judul */
+
+.social-icon {
+    display: flex; align-items: center; justify-content: center;
+    width: 45px; height: 45px; background: rgba(255,255,255,0.1);
+    color: #fff; border-radius: 50%; font-size: 1.2rem; transition: 0.3s;
+}
+
+.social-icon.ig:hover { background: #e1306c; transform: translateY(-5px); }
+.social-icon.tt:hover { background: #000; border: 1px solid #fff; transform: translateY(-5px); }
+.social-icon.yt:hover { background: #ff0000; transform: translateY(-5px); }
+
+/* Footer Bottom (Copyright) */
+.footer-bottom {
+    background-color: #111;
+    text-align: center;
+    /* Tambah padding atas */
+    padding: 25px 0;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+.footer-bottom p { font-size: 0.85rem; margin: 0; }
+
+/* Responsive HP */
+@media (max-width: 768px) {
+    .footer-row {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+/* =========================================
+   7. MODAL & EXTRAS
+   ========================================= */
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); overflow: auto; }
+.modal-content { width: 90%; max-width: 900px; margin: 5% auto; text-align: center; position: relative; animation: slideDown 0.4s; }
+.slideshow-container { height: 70vh; display: flex; align-items: center; justify-content: center; }
+.mySlides { max-height: 100%; width: auto; max-width: 100%; border-radius: 10px; }
+.close-btn { position: absolute; right: 0; top: -40px; color: #fff; font-size: 40px; cursor: pointer; }
+.prev, .next { position: fixed; top: 50%; transform: translateY(-50%); color: #fff; font-size: 40px; cursor: pointer; z-index: 2001; background: none; }
+.prev { left: 30px; } .next { right: 30px; }
+
+.team-modal-content {
+    background: transparent !important; /* Hapus background putih */
+    box-shadow: none !important;        /* Hapus bayangan kotak */
+    border: none !important;            /* Hapus border */
+    padding: 0 !important;              /* Hapus padding */
+    
+    /* Agar posisi di tengah sempurna */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* Ukuran maksimal menyesuaikan layar */
+    width: auto !important;
+    max-width: 95vw !important; 
+    margin-top: 5vh !important; /* Jarak sedikit dari atas */
+}
+
+/* Gaya Foto Full Frame */
+.team-modal-content img {
+    /* Reset bentuk bulat dan border tebal sebelumnya */
+    border-radius: 12px !important; /* Sudut sedikit melengkung biar manis */
+    border: none !important; 
+    
+    /* Atur ukuran agar besar tapi tidak melebihi layar */
+    width: auto !important;
+    height: auto !important;
+    max-width: 100%;     /* Mentok lebar kontainer */
+    max-height: 75vh;    /* Mentok 75% tinggi layar agar ada ruang utk teks */
+    object-fit: contain; /* Jaga proporsi foto asli (tidak gepeng) */
+    
+    margin-bottom: 20px; /* Jarak ke teks nama */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5); /* Bayangan dalam agar foto 'pop-up' */
+}
+.team-name {
+    color: #fff !important; /* Teks putih */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8); /* Bayangan teks agar terbaca jelas */
+}
+
+/* Gaya Teks Jabatan */
+.team-role {
+    color: var(--primary-color) !important; /* Warna kuning */
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+.team-modal-content .close-btn {
+    /* Posisikan di pojok kanan atas foto */
+    position: absolute;
+    top: -35px;
+    right: 0;
+    color: #fff;
+    opacity: 0.7;
+    font-size: 35px;
+    transition: 0.3s;
+}
+.team-modal-content .close-btn:hover {
+    opacity: 1;
+    color: var(--primary-color);
+    transform: rotate(90deg); /* Efek putar sedikit saat hover */
+}
+
+/* Responsive untuk HP */
+@media (max-width: 768px) {
+    .team-modal-content img {
+        max-height: 65vh; /* Di HP foto sedikit lebih pendek biar teks muat */
+    }
+    .team-name { font-size: 1.5rem; }
+    .team-role { font-size: 1rem; }
+}
+.to-top {
+    background: var(--dark-color); width: 45px; height: 45px; bottom: 30px; right: 30px;
+    border-radius: 10px; color: #fff; font-size: 20px; opacity: 0; pointer-events: none;
+    display: flex; align-items: center; justify-content: center; position: fixed; transition: 0.4s; z-index: 999;
+}
+.to-top.active { opacity: 1; pointer-events: auto; }
+.to-top:hover { background: var(--primary-color); color: #000; transform: translateY(-5px); }
+
+@keyframes slideDown { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .navbar { top: 0; width: 100%; border-radius: 0; left: 0; transform: none; }
+    .nav-links { 
+        position: absolute; right: 0; top: 70px; background: #fff; width: 100%; height: 0; 
+        flex-direction: column; align-items: center; overflow: hidden; transition: 0.4s; 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .nav-links.active { height: 320px; padding-top: 20px; }
+    .nav-links li { margin: 15px 0; }
+    .hamburger { display: block; }
+    
+    .hero h2 { font-size: 2.5rem; }
+    .footer-row { flex-direction: column; gap: 40px; }
+    
+    .line-branch-2, .line-merge-2, .line-branch-5, .line-vertical-single, .line-vertical-top, .level.level-3 .struct-card::before { display: none !important; }
+    .level.level-3 { flex-wrap: nowrap; overflow-x: scroll; justify-content: flex-start; padding-left: 20px; }
+}
+/* =========================================
+   TYPEWRITER EFFECT (SMOOTH VERSION)
+   ========================================= */
+
+#typewriter {
+    color: var(--dark-color);
+    /* Opsional: Tambahkan border kanan tipis sebagai kursor alternatif */
+}
+
+/* Kursor Halus */
+#cursor {
+    display: inline-block;
+    width: 3px; /* Garis lebih tipis elegan */
+    height: 1em; /* Tinggi menyesuaikan huruf */
+    margin-left: 5px;
+    background-color: var(--primary-color);
+    /* Gunakan cubic-bezier agar kedipan terasa lebih natural */
+    animation: smoothBlink 1s cubic-bezier(0.4, 0, 0.6, 1) infinite; 
+    vertical-align: middle;
+    position: relative;
+    top: -2px; /* Penyesuaian posisi vertikal dikit */
+}
+
+@keyframes smoothBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+/* =========================================
+   FIX: CENTER TEXT STRUKTUR
+   ========================================= */
+
+#struktur {
+    /* Pastikan teks di dalam section ini rata tengah */
+    text-align: center !important; 
+    
+    /* Garis kuning bawah */
+    padding-bottom: 80px;
+}
+
+/* Agar deskripsi di bawah judul juga rapi di tengah */
+#struktur .section-desc {
+    margin: 0 auto 40px; /* auto kiri-kanan agar tengah */
+    max-width: 800px;    /* Batasi lebar agar enak dibaca */
+    color: var(--text-sec);
+}
+
+/* Pastikan struktur pohonnya juga tetap di tengah */
+.structure-tree {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Kunci agar bagan di tengah */
+    margin-top: 40px;
+}
+/* Update di style.css (Bagian Dokumentasi) */
+.load-more-container { 
+    text-align: center; 
+    
+    /* Tambah jarak dari galeri di atasnya */
+    margin-top: 60px; 
+}
+
+/* --- HAPUS SLIDER HORIZONTAL LAMA --- */
+
+/* GANTI seluruh isi file style.css dengan kode ini. */
+
+/* ... (Kode CSS sebelumnya yang tidak berhubungan dengan slider biarkan sama) ... */
+
+/* =========================================
+   SLIDER OTOMATIS HERO (FADE STACKING FIX)
+   ========================================= */
+
+.slider-wrapper {
+    position: relative;
+    width: 100%; 
+    height: 400px; 
+    overflow: hidden !important;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.slideshow-container-hero {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.heroSlides {
+    position: absolute; /* KUNCI: Foto saling menumpuk */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    transition: opacity 1.5s ease-in-out; 
+    
+    /* DEFAULT SEMBUNYI: Disembunyikan oleh CSS */
+    opacity: 0; 
+    display: none; 
+}
+
+/* KUNCI FIX: Memastikan hanya foto pertama yang tampil stabil di awal */
+.heroSlides:first-child {
+    display: block !important;
+    opacity: 1 !important;
+}

@@ -1,0 +1,46 @@
+/* =========================================
+   ANIMATION STYLES (Scroll Reveal)
+   ========================================= */
+
+/* 1. Base Class (Keadaan Awal: Tersembunyi) */
+.reveal {
+    opacity: 0;
+    transition: all 1s ease-out; /* Durasi animasi halus */
+    visibility: hidden; /* Agar tidak bisa diklik saat belum muncul */
+}
+
+/* 2. Active Class (Keadaan Akhir: Muncul) */
+.reveal.active {
+    opacity: 1;
+    visibility: visible;
+    transform: none; /* Kembali ke posisi asli */
+}
+
+/* --- VARIASI ANIMASI --- */
+
+/* A. Fade Up (Muncul dari Bawah) - Paling sering dipakai */
+.fade-up {
+    transform: translateY(50px); /* Turun 50px */
+}
+
+/* B. Fade Left (Muncul dari Kanan ke Kiri) */
+.fade-left {
+    transform: translateX(50px); /* Geser ke kanan */
+}
+
+/* C. Fade Right (Muncul dari Kiri ke Kanan) */
+.fade-right {
+    transform: translateX(-50px); /* Geser ke kiri */
+}
+
+/* D. Zoom In (Membesar) */
+.zoom-in {
+    transform: scale(0.8); /* Kecil dulu */
+}
+
+/* --- DELAY (Agar munculnya gantian/berurutan) --- */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }

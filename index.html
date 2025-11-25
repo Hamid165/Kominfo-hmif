@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="logo.svg" type="image/svg+xml" />
+    <title>Departemen Kominfo - Organisasi XYZ</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <a href="#home" class="logo-container">
+          <img src="logo.svg" alt="Logo Organisasi" class="logo-img" />
+          <h1 class="logo-text">KOMINFO</h1>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#struktur">Tim</a></li>
+          <li><a href="#about">Tugas</a></li>
+          <li><a href="#proker">Proker</a></li>
+          <li><a href="#dokumentasi">Dokumentasi</a></li>
+        </ul>
+        <div class="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <section id="home" class="hero">
+      <div class="container hero-wrapper">
+        <div class="hero-content reveal fade-right">
+          <h2 style="margin: 0; color: #ffd400">Departemen</h2>
+          <h2 style="color: #ffd400">
+            <span style="color: #ffd400" id="typewriter"></span
+            ><span id="cursor">|</span>
+          </h2>
+          <p>
+            Menghubungkan informasi, membangun komunikasi, dan menyebarkan
+            inspirasi untuk Organisasi HMIF.
+          </p>
+        </div>
+
+        <div class="hero-image reveal fade-left">
+          <img src="moment/11.jpg" alt="Tim Kominfo" />
+        </div>
+      </div>
+    </section>
+
+    <section id="struktur" class="section-padding">
+      <div class="container">
+        <h2 class="section-title reveal fade-up">Struktur Departemen</h2>
+        <p class="section-desc reveal fade-up delay-100">
+          Orang-orang dibalik layar Kominfo HMIF
+        </p>
+
+        <div class="structure-tree">
+          <div class="level level-1">
+            <div
+              class="struct-card reveal fade-up delay-200"
+              onclick="openTeamModal('struktur/1.JPG', 'Rakha Arbiyandanu', 'Koordinator Departemen')"
+            >
+              <div class="img-box">
+                <img src="struktur/1.JPG" alt="Koordinator" />
+              </div>
+              <h4>Rakha Arbiyandanu</h4>
+              <p class="role">Koordinator Departemen</p>
+            </div>
+          </div>
+
+          <div class="line-vertical-top"></div>
+          <div class="line-branch-2"></div>
+
+          <div class="level level-2">
+            <div
+              class="struct-card reveal fade-up delay-300"
+              onclick="openTeamModal('struktur/2.JPG', 'Hamid Sabirin', 'Social Media Specialist')"
+            >
+              <div class="img-box">
+                <img src="struktur/2.JPG" alt="SMS 1" />
+              </div>
+              <h4>Hamid Sabirin</h4>
+              <p class="role">Social Media Specialist</p>
+            </div>
+            <div
+              class="struct-card reveal fade-up delay-400"
+              onclick="openTeamModal('struktur/3.JPG', 'M. Zacky Permana', 'Social Media Specialist')"
+            >
+              <div class="img-box">
+                <img src="struktur/3.JPG" alt="SMS 2" />
+              </div>
+              <h4>M. Zacky Permana</h4>
+              <p class="role">Social Media Specialist</p>
+            </div>
+          </div>
+
+          <div class="line-merge-2"></div>
+          <div class="line-vertical-single"></div>
+          <div class="line-branch-5"></div>
+
+          <div class="level level-3">
+            <div
+              class="struct-card reveal fade-up delay-500"
+              onclick="openTeamModal('struktur/4.JPG', 'Aulia Radix Putra Winarko', 'Content Creator')"
+            >
+              <div class="img-box">
+                <img src="struktur/4.JPG" alt="CC 1" />
+              </div>
+              <h4>Aulia Radix Putra Winarko</h4>
+              <p class="role">Content Creator</p>
+            </div>
+            <div
+              class="struct-card reveal fade-up delay-600"
+              onclick="openTeamModal('struktur/5.JPG', 'Muhammad Agha Zulfadhli', 'Content Creator')"
+            >
+              <div class="img-box">
+                <img src="struktur/5.JPG" alt="CC 2" />
+              </div>
+              <h4>Muhammad Agha Zulfadhli</h4>
+              <p class="role">Content Creator</p>
+            </div>
+            <div
+              class="struct-card reveal fade-up delay-700"
+              onclick="openTeamModal('struktur/6.JPG', 'Muhamad Faza Fahri aziz', 'Content Creator')"
+            >
+              <div class="img-box">
+                <img src="struktur/6.JPG" alt="CC 3" />
+              </div>
+              <h4>Muhamad Faza Fahri aziz</h4>
+              <p class="role">Content Creator</p>
+            </div>
+            <div
+              class="struct-card reveal fade-up delay-800"
+              onclick="openTeamModal('struktur/7.JPG', 'Fadhel Yussie Ramadhan', 'Content Creator')"
+            >
+              <div class="img-box">
+                <img src="struktur/7.JPG" alt="CC 4" />
+              </div>
+              <h4>Fadhel Yussie Ramadhan</h4>
+              <p class="role">Content Creator</p>
+            </div>
+            <div
+              class="struct-card reveal fade-up delay-900"
+              onclick="openTeamModal('struktur/8.JPG', 'Dafa Awal Wahyu Pambudi', 'Content Creator')"
+            >
+              <div class="img-box">
+                <img src="struktur/8.JPG" alt="CC 5" />
+              </div>
+              <h4>Dafa Awal Wahyu Pambudi</h4>
+              <p class="role">Content Creator</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="modalTeam" class="modal">
+      <div class="modal-content team-modal-content">
+        <span class="close-btn" onclick="closeTeamModal()">&times;</span>
+        <img id="teamImg" src="" alt="Team Member" />
+        <h3 id="teamName" class="team-name">Nama Anggota</h3>
+        <p id="teamRole" class="team-role">Jabatan</p>
+      </div>
+    </div>
+
+    <section id="about" class="section-padding">
+      <div class="container">
+        <h2 class="section-title reveal fade-up">Tentang Kami</h2>
+        <p class="section-desc reveal fade-up">
+          TUGAS DEPARTEMEN KOMUNIKASI DAN INFORMASI
+        </p>
+
+        <ul class="about-list">
+          <li class="reveal fade-up delay-100">
+            <i class="fas fa-check-circle"></i>
+            <span
+              >Sebagai pihak terdepan dalam menyampaikan informasi dan
+              komunikasi kepada seluruh elemen di Telkom University Purwokerto,
+              khususnya warga Prodi S1 Teknik Informatika.</span
+            >
+          </li>
+          <li class="reveal fade-up delay-100">
+            <i class="fas fa-check-circle"></i>
+            <span
+              >Pengelolaan informasi baik dari website, majalah dinding, dan
+              media sosial yang berkaitan dengan Informatika.</span
+            >
+          </li>
+          <li class="reveal fade-up delay-100">
+            <i class="fas fa-check-circle"></i>
+            <span
+              >Melakukan publikasi dan dokumentasi mengenai segala kegiatan
+              kemahasiswaan di bawah naungan dan tanggung jawab HMIF Telkom
+              University Purwokerto.</span
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="proker" class="section-padding bg-light">
+      <div class="container">
+        <h2 class="section-title">PROGRAM KERJA</h2>
+
+        <div class="proker-grid">
+          <div class="proker-card reveal fade-up delay-100">
+            <div class="proker-img-box">
+              <img src="moment/12.jpg" alt="HMIF Kreatif" />
+            </div>
+            <div class="proker-content">
+              <h3>HMIF KREATIF</h3>
+              <p>
+                Kegiatan untuk memperkenalkan semua pengurus Himpunan Mahasiswa
+                Informatika Telkom University Purwokerto melalui media sosial.
+              </p>
+              <button class="btn-detail" onclick="openModal('modal1')">
+                View Detail
+              </button>
+            </div>
+          </div>
+
+          <div class="proker-card reveal fade-up delay-100">
+            <div class="proker-img-box">
+              <img src="ig1.jpg" alt="Sosial Media" />
+            </div>
+            <div class="proker-content">
+              <h3>SOSIAL MEDIA</h3>
+              <p>
+                Mengelola arus informasi publik dan interaksi digital melalui
+                Instagram, TikTok, dan Youtube untuk membangun citra positif
+                organisasi.
+              </p>
+              <button class="btn-detail" onclick="openModal('modal2')">
+                View Detail
+              </button>
+            </div>
+          </div>
+
+          <div class="proker-card reveal fade-up delay-100">
+            <div class="proker-img-box">
+              <img src="memory.jpg" alt="Memory Rolls" />
+            </div>
+            <div class="proker-content">
+              <h3>MEMORY ROLLS</h3>
+              <p>
+                Program dokumentasi eksklusif yang merekam jejak perjalanan,
+                momen kebersamaan, dan sejarah kepengurusan dengan sinematik.
+              </p>
+              <button class="btn-detail" onclick="openModal('modal3')">
+                View Detail
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dokumentasi" class="section-padding">
+      <div class="container">
+        <h2 class="section-title reveal fade-up">DOKUMENTASI KEGIATAN</h2>
+        <p class="section-desc reveal fade-up delay-100">
+          Momen keseruan dan kebersamaan kami
+        </p>
+
+        <div class="gallery-grid">
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/1.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/2.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/3.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/4.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/5.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/6.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/7.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/8.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/9.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/10.jpg" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/11.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/12.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/13.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/14.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/15.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/16.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/17.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/18.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/19.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/20.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/21.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/22.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/23.jpg" loading="lazy" alt="Dokumentasi" />
+          </div>
+
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/24.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/25.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/26.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/27.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/28.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/29.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+          <div class="gallery-item reveal zoom-in">
+            <img src="moment/30.JPG" loading="lazy" alt="Dokumentasi" />
+          </div>
+        </div>
+
+        <div class="load-more-container reveal fade-up delay-200">
+          <button id="loadMoreBtn" class="btn btn-outline">
+            Lihat Lebih Banyak
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-row">
+          <div class="footer-col">
+            <div class="footer-logo">
+              <img src="logo.svg" alt="Logo" class="footer-logo-img" />
+              <h3>KOMINFO</h3>
+            </div>
+            <p class="footer-desc">
+              Menghubungkan informasi, membangun komunikasi, dan menyebarkan
+              inspirasi untuk seluruh elemen di Telkom University Purwokerto.
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h3>Jelajahi</h3>
+            <ul class="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#struktur">Struktur Tim</a></li>
+              <li><a href="#proker">Program Kerja</a></li>
+              <li><a href="#dokumentasi">Dokumentasi</a></li>
+              <li><a href="#about">Tentang Kami</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Hubungi Kami</h3>
+            <ul class="footer-contact">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Jl. D. I. Panjaitan No. 128, Purwokerto</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>hmif-pwt@telkomuniversity.ac.id</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Ikuti Kami</h3>
+            <div class="social-links">
+              <a
+                href="https://www.instagram.com/hmif_telkompurwokerto/"
+                target="_blank"
+                class="social-icon ig"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.tiktok.com/@hmif_telkompurwokerto"
+                target="_blank"
+                class="social-icon tt"
+              >
+                <i class="fab fa-tiktok"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/@hmiftelkompurwokerto9584"
+                target="_blank"
+                class="social-icon yt"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025 Departemen Kominfo - HMIF Telkom University Purwokerto.
+          All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+        <h3>HMIF KREATIF</h3>
+        <div class="slideshow-container">
+          <img
+            class="mySlides fade"
+            data-src="assets/logo.jpg"
+            style="display: block"
+          />
+          <img class="mySlides fade" data-src="assets/kahimwakahim.jpg" />
+          <img class="mySlides fade" data-src="assets/sekretaris.jpg" />
+          <img class="mySlides fade" data-src="assets/bendahara.jpg" />
+          <img class="mySlides fade" data-src="assets/psdm.jpg" />
+          <img class="mySlides fade" data-src="assets/minbat.jpg" />
+          <img class="mySlides fade" data-src="assets/sosial.jpg" />
+          <img class="mySlides fade" data-src="assets/ekraf.jpg" />
+          <img class="mySlides fade" data-src="assets/kominfo.jpg" />
+          <img class="mySlides fade" data-src="assets/hubeks.jpg" />
+          <a class="prev" onclick="plusSlides(-1, 'modal1')">&#10094;</a>
+          <a class="next" onclick="plusSlides(1, 'modal1')">&#10095;</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal2" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
+
+        <h3>SOSIAL MEDIA</h3>
+
+        <div class="slideshow-container">
+          <img
+            class="mySlides fade"
+            data-src="sosialmedia/hari.jpg"
+            style="display: block"
+          />
+          <img class="mySlides fade" data-src="sosialmedia/get.jpg" />
+          <img class="mySlides fade" data-src="sosialmedia/1.jpg" />
+          <img class="mySlides fade" data-src="sosialmedia/2.jpg" />
+          <img class="mySlides fade" data-src="sosialmedia/3.jpg" />
+          <img class="mySlides fade" data-src="sosialmedia/4.jpg" />
+          <img class="mySlides fade" data-src="sosialmedia/prestasi.jpg" />
+          <img class="mySlides fade" data-src="sosialmedia/prestasi1.jpg" />
+          <img class="mySlides fade" data-src="sosialmedia/tt.jpg" />
+          <img class="mySlides fade" data-src="sosialmedia/yt.jpg" />
+
+          <a class="prev" onclick="plusSlides(-1, 'modal2')">&#10094;</a>
+          <a class="next" onclick="plusSlides(1, 'modal2')">&#10095;</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal3" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
+        <h3>MEMORY ROLLS</h3>
+        <div class="slideshow-container">
+          <img
+            class="mySlides fade"
+            data-src="sosialmedia/cmngsn.png"
+            style="display: block"
+          />
+        </div>
+      </div>
+    </div>
+    <a href="#" class="to-top">
+      <i class="fas fa-chevron-up"></i>
+    </a>
+    <script src="animations.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
