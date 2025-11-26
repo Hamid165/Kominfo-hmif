@@ -296,3 +296,69 @@ window.onclick = function (event) {
     if (typeof slideInterval !== "undefined") clearInterval(slideInterval);
   }
 };
+/* =========================================
+   HANDLE CONTACT FORM (AJAX)
+   ========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector(".main-contact-form"); // Sesuaikan class form Anda
+  const modal = document.getElementById("successModal");
+  const btnSubmit = form.querySelector(".btn-submit-form");
+  const originalBtnText = btnSubmit.innerHTML;
+
+  if (form) {
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault(); // 1. Mencegah halaman reload/pindah
+
+      // Ubah tombol jadi loading
+      btnSubmit.innerHTML =
+        "Mengirim... <i class='fas fa-spinner fa-spin'></i>";
+      btnSubmit.disabled = true;
+
+      const data = new FormData(event.target);
+
+      try {
+        // 2. Kirim data ke Formspree menggunakan Fetch API
+        const response = await fetch(event.target.action, {
+          method: form.method,
+          body: data,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        // 3. Jika berhasil
+        if (response.ok) {
+          modal.classList.add("active"); // Munculkan Pop-up
+          form.reset(); // Kosongkan form
+        } else {
+          // Jika ada error dari Formspree
+          alert(
+            "Maaf, terjadi kesalahan saat mengirim pesan. Silakan coba lagi."
+          );
+        }
+      } catch (error) {
+        // Jika error koneksi
+        alert("Terjadi kesalahan koneksi.");
+      } finally {
+        // Kembalikan tombol seperti semula
+        btnSubmit.innerHTML = originalBtnText;
+        btnSubmit.disabled = false;
+      }
+    });
+  }
+});
+
+// Fungsi Tutup Modal
+function closeSuccessModal() {
+  const modal = document.getElementById("successModal");
+  modal.classList.remove("active");
+}
+
+// Tutup modal jika klik di luar area putih
+window.addEventListener("click", function (event) {
+  const modal = document.getElementById("successModal");
+  if (event.target === modal) {
+    modal.classList.remove("active");
+  }
+});

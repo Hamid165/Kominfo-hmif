@@ -379,6 +379,73 @@
         </div>
       </div>
     </section>
+    <section id="contact" class="section-padding bg-light">
+      <div class="container">
+        <h2 class="section-title reveal fade-up">Hubungi Kami</h2>
+        <p class="section-desc reveal fade-up delay-100">
+          Punya pertanyaan, kritik, saran, atau ingin berkolaborasi? Kirimkan
+          pesan Anda kepada kami.
+        </p>
+
+        <div class="contact-wrapper reveal fade-up delay-200">
+          <form
+            action="https://formspree.io/f/mrbvvblw"
+            method="POST"
+            class="main-contact-form"
+          >
+            <div class="input-row">
+              <div class="input-group">
+                <label>Nama Lengkap</label>
+                <input
+                  type="text"
+                  name="Nama"
+                  placeholder="Contoh: Aulia Radix"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label>Alamat Email</label>
+                <input
+                  type="email"
+                  name="Email"
+                  placeholder="nama@email.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Subjek</label>
+              <input
+                type="text"
+                name="Subject"
+                placeholder="Tentang apa pesan ini?"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label>Pesan Anda</label>
+              <textarea
+                name="Pesan"
+                rows="6"
+                placeholder="Tuliskan pesan Anda secara detail..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-submit-form">
+              Kirim Pesan <i class="fas fa-paper-plane"></i>
+            </button>
+
+            <p class="form-note-dark">
+              *Pastikan email yang Anda masukkan aktif agar kami dapat
+              membalasnya.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">
       <div class="container">
@@ -414,7 +481,7 @@
               </li>
               <li>
                 <i class="fas fa-envelope"></i>
-                <span>hmiftup@gmail.com</span>
+                <span>hmif@ittelkom-pwt.ac.id</span>
               </li>
             </ul>
           </div>
@@ -454,7 +521,14 @@
         </p>
       </div>
     </footer>
-
+    <div id="successModal" class="modal-success">
+        <div class="modal-success-content">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h3>Pesan Terkirim!</h3>
+            <p>Terima kasih telah menghubungi kami. Kami akan segera membalas pesan Anda.</p>
+            <button onclick="closeSuccessModal()" class="btn btn-primary-submit">Tutup</button>
+        </div>
+    </div>
     <div id="modal1" class="modal">
       <div class="modal-content">
         <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
