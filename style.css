@@ -150,29 +150,183 @@ ul { list-style: none; }
 .about-list li i { color: var(--primary-color); font-size: 1.5rem; margin-right: 20px; flex-shrink: 0; }
 
 /* Proker Cards (Clean) */
-.bg-light { background: #f4f7f6; }
-.proker-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px; margin-top: 50px;
+/* =========================================
+   PROKER: TIMELINE VERTICAL (FIXED DOT CENTER)
+   ========================================= */
+
+/* Hapus .proker-grid dan .proker-card yang lama */
+.proker-grid, .proker-card { 
+    display: none; 
+    border: 2px solid var(--primary-color);
+} 
+
+.proker-timeline-container {
+    max-width: 900px;
+    margin: 50px auto 0;
+    padding: 0 20px;
 }
-.proker-card {
-    background: #fff; border-radius: 20px; overflow: hidden;
-    box-shadow: var(--shadow-soft); border: none; /* Hapus border */
-    transition: 0.4s ease; text-align: center; /* Rata tengah */
+
+.proker-timeline {
+    position: relative;
+    list-style: none;
+    padding: 0;
 }
-.proker-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-.proker-img-box { width: 100%; height: 220px; overflow: hidden; }
-.proker-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.proker-card:hover .proker-img-box img { transform: scale(1.1); }
-.proker-content { padding: 30px; }
-.proker-content h3 { font-size: 1.4rem; margin-bottom: 10px; font-weight: 700; }
+
+/* Garis Vertical Timeline Utama */
+.proker-timeline::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%; 
+    margin-left: -1.5px;
+}
+
+.timeline-item {
+    /* Padding vertikal agar titik (dot) bisa masuk di tengah */
+    padding: 50px 0; /* <--- PENTING: Menambah jarak vertikal */
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+/* Konten Proker (Card) */
+.timeline-content {
+    padding: 20px 30px;
+    background-color: var(--light-color);
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    border: 1px solid #f0f0f0;
+    border: 2px solid var(--primary-color);
+}
+
+.timeline-item:hover .timeline-content {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Titik Bulat di Garis Tengah (FIXED POSITION) */
+.timeline-dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border: 3px solid var(--bg-alt);
+    border-radius: 50%;
+    z-index: 10;
+    
+    /* KUNCI FIX: Selalu berada di tengah item */
+    top: 50%; /* Posisikan 50% dari atas item */
+    transform: translateY(-50%); /* Geser ke atas setengah tinggi dot (10px) */
+}
+
+/* Atur posisi dot untuk item Ganjil (Kanan) */
+.proker-timeline li:nth-child(odd) {
+    left: 50%;
+    padding-left: 30px;
+}
+.proker-timeline li:nth-child(odd) .timeline-dot {
+    left: -10px; /* Kiri dari item (agar di tengah garis) */
+    right: auto;
+}
+
+/* Atur posisi dot untuk item Genap (Kiri) */
+.proker-timeline li:nth-child(even) {
+    left: 0;
+    padding-right: 30px;
+}
+.proker-timeline li:nth-child(even) .timeline-dot {
+    right: -10px; /* Kanan dari item (agar di tengah garis) */
+    left: auto;
+}
+
+/* Panah yang menunjuk ke garis tengah (Dekorasi) */
+.timeline-content::after {
+    content: " ";
+    position: absolute;
+    /* KUNCI FIX: Posisikan panah di tengah vertikal card */
+    top: 50%;
+    transform: translateY(-50%);
+    
+    z-index: 1;
+    border: medium solid white;
+    border-width: 10px;
+    margin-top: 0;
+    /* Aturan default untuk item Genap (Kiri -> Panah di Kanan) */
+    right: -20px; /* Geser lebih jauh agar tidak menimpa dot */
+    border-color: transparent transparent transparent white;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+}
+
+/* Atur Panah untuk item Ganjil (Kanan -> Panah di Kiri) */
+.proker-timeline li:nth-child(odd) .timeline-content::after {
+    left: -20px; /* Geser lebih jauh agar tidak menimpa dot */
+    right: auto;
+    border-color: transparent white transparent transparent;
+}
+
+
+/* Style Konten di dalam Card (sama seperti sebelumnya) */
+.timeline-content h3 { 
+    font-size: 1.4rem; margin-bottom: 10px; font-weight: 700; color: var(--dark-color);
+}
+.timeline-content p { 
+    font-size: 1rem; margin-bottom: 15px; 
+}
+.proker-img-box { 
+    width: 100%; height: 180px; overflow: hidden; margin-bottom: 15px;
+    border-radius: 8px;
+}
+.proker-img-box img { 
+    width: 100%; height: 100%; object-fit: cover; transition: 0.5s; 
+}
+.timeline-content:hover .proker-img-box img { 
+    transform: scale(1.05); 
+}
+
 .btn-detail {
-    margin-top: 20px; padding: 10px 25px; background: transparent;
+    margin-top: 5px; padding: 10px 25px; background: transparent;
     border: 2px solid var(--primary-color); color: var(--dark-color);
     border-radius: 50px; font-weight: 600; transition: 0.3s;
 }
-.btn-detail:hover { background: var(--primary-color); color: #fff; }
+.btn-detail:hover { 
+    background: var(--primary-color); color: #fff; 
+}
 
+
+/* --- RESPONSIVE TIMELINE HP (Stack Vertikal) --- */
+@media (max-width: 768px) {
+    .proker-timeline::after {
+        left: 31px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 60px;
+        padding-right: 15px;
+    }
+
+    .timeline-dot {
+        left: 25px;
+        right: auto;
+        /* top: 50% dan transform: translateY(-50%) tetap bekerja dengan baik di sini */
+    }
+
+    .proker-timeline li:nth-child(odd),
+    .proker-timeline li:nth-child(even) {
+        left: 0;
+        padding-right: 15px;
+    }
+    
+    .timeline-content::after,
+    .proker-timeline li:nth-child(odd) .timeline-content::after {
+        content: none;
+    }
+}
 /* =========================================
    5. STRUKTUR (Tetap Rapi)
    ========================================= */
